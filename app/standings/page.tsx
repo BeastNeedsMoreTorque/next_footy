@@ -52,7 +52,7 @@ async function Standings() {
 
     const sortedStandings = calcStandings(matchResults);
     
-    console.log(JSON.stringify(results));
+    console.log(JSON.stringify(matchResults));
     return (
       <>
         <div>Standings Next.js page</div>
