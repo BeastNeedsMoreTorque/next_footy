@@ -1,8 +1,6 @@
-// const apiKey = process.env.NEXT_FOOTBALL_API_KEY;
-// const apiKey = NEXT_FOOTBALL_API_KEY;
-import Standings from "./standings/page";
+import pimps from '../helpers/pimps_long.json';
+import calcStandings from '../helpers/calcStandings';
 
-/**
 const options = {
     method: 'GET',
     headers: {
@@ -26,11 +24,12 @@ async function getData() {
   return res.json()
 }
 
-*/
- 
-export default async function Page() {
-  // const data = await getData()
-  // console.log(JSON.stringify(data));
-  
-  return <main><Standings /></main>
+async function Standings() {
+    const data = await getData()
+  console.log(JSON.stringify(data));
+  return (
+    <div>Standings page</div>
+  )
 }
+
+export default Standings
