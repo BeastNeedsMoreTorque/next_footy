@@ -26,10 +26,70 @@ async function getData() {
 
 async function Standings() {
     const data = await getData()
-  console.log(JSON.stringify(data));
-  return (
-    <div>Standings page</div>
-  )
+    const results = data.matches.filter((p: { homeTeam: { name: string }; awayTeam: { name: string }; }) => !pimps.includes(p.homeTeam.name) && !pimps.includes(p.awayTeam.name))
+
+    function gameStatus(g) {
+      return g === 'FINISHED';
+    }
+
+  const matchResults = results
+    .filter((r) => gameStatus(r.status))
+    .map(m =>
+    ({
+      //   d: m.id,
+      //   name: m.stage,
+      awayTeam: m.awayTeam.name,
+      homeTeam: m.homeTeam.name,
+      awayCrest: m.awayTeam.crest,
+      homeCrest: m.homeTeam.crest,
+      //   status: m.status,
+      //   outcome: m.score.winner,
+      //dataDay: dataDay,
+      //time: time,
+      awayScore: m.score.fullTime.away,
+      homeScore: m.score.fullTime.home,
+    }))
+
+    const sortedStandings = calcStandings(matchResults);
+    
+    console.log(JSON.stringify(results));
+    return (
+      <>
+        <div>Standings Next.js page</div>
+
+        <div className='overflow-x-auto'>
+                    <table className='table'>
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Crest</th>
+                                <th>Team</th>
+                                <th>GP</th>
+                                <th>GF</th>
+                                <th>GA</th>
+                                <th>GD</th>
+                                <th>Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sortedStandings.map((teamData, index) => (
+                                <tr className='hover' key={index}>
+                                    <td>{index + 1}</td>
+                                    <td className='w-1 rounded-full'><img src={teamData.crest} alt='team-crest' /></td>
+                                    <td>{teamData.team}</td>
+                                    <td>{teamData.gp}</td>
+                                    <td>{teamData.goalsScored}</td>
+                                    <td>{teamData.goalsConceded}</td>
+                                    <td>{teamData.goalsScored - teamData.goalsConceded}</td>
+                                    <td>{teamData.points}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    {/* <p>The season you selected is: {selectedSeason}</p> */}
+                </div>
+      </>
+    )
 }
 
 export default Standings
