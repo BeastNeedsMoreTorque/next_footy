@@ -17,11 +17,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav>
-          <div className="navbar bg-neutral text-neutral-content">
-            <a className="btn btn-ghost normal-case text-xl">Standings</a>
-          </div>
-        </nav>
         {children}
       </body>
     </html>
