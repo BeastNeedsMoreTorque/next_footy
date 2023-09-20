@@ -38,6 +38,11 @@ function Leagues() {
        const handleSelectedLeague = (event: { target: { value: React.SetStateAction<string>; }; }) => {
           setSelectedLeague(event.target.value);
         }
+        OR bette:
+        const handleSelectedLeague = (event: React.ChangeEvent<HTMLSelectElement>) => {
+            setSelectedLeague(event.target.value);
+        }
+
      */
     
   return (
