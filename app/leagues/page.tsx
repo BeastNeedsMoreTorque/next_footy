@@ -31,6 +31,14 @@ function Leagues() {
     const handleSelectedLeague = (event) => {
         setSelectedLeague(event.target.value);
     }
+
+    /**
+     * 
+     * // suggested type for this function 
+       const handleSelectedLeague = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+          setSelectedLeague(event.target.value);
+        }
+     */
     
   return (
       <>
