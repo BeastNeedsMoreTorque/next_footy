@@ -12,6 +12,11 @@ const options = {
 const BASE_URL = 'https://api.football-data.org/v4/';
 
 async function getData() {
+  //the question is why did i put the season and league select buttons
+  // in another module/file? how do i pass the state to this file?
+  //in my other project vite-simple i put the buttons in the App2.jsx file.
+  //`${BASE_URL}competitions/${selectedLeague}/matches?season=${selectedSeason}`
+  
   const res = await fetch(`${BASE_URL}competitions/2021/matches?season=2022`, options)
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
