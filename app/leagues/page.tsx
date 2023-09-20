@@ -51,7 +51,10 @@ function Leagues() {
               <div>
                   <label className='label text-xl w-1/3'>
                       League:
-                      <select className='select select-lg w-1/2 max-w-xs' value={selectedLeague} onChange={handleSelectedLeague}>
+                      <select className='select select-lg w-1/2 max-w-xs' 
+                          value={selectedLeague} 
+                          onChange={handleSelectedLeague}
+                        >
                           <option value="">Select a League</option>
                           {/* {Object.keys(Leagues).map((key, value) => (
                         <option key={key} value={value}>
@@ -74,7 +77,8 @@ function Leagues() {
               <div>
                   <label className='label text-xl w-1/3'>
                       Season:
-                      <select className='select select-lg w-1/2 max-w-xs' name="selectedSeason"
+                      <select className='select select-lg w-1/2 max-w-xs' 
+                          name="selectedSeason"
                           value={selectedSeason}
                           onChange={(e) => setSelectedSeason(e.target.value)}
                       >
