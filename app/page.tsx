@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import Leagues from "./leagues/page";
 import Standings from "./standings/page";
 
